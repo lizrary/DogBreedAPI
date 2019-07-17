@@ -1,0 +1,50 @@
+main {
+  padding-top: 100px;
+}
+
+main .row {
+  margin-bottom: 20px;
+}
+
+.box {
+ 
+  padding-top: 30px;
+  margin-top:25px;
+}
+
+img{
+  width:220px;
+  height:200px;
+}
+
+.container{
+  width:100%;
+  padding:20px;
+  color: black;
+  font-size:20px;
+}
+
+
+
+
+fieldset{
+  border:none;
+  vertical-align: bottom;
+  margin-bottom:10px;
+}
+
+form input{
+  font-size:20px;
+  margin-top:15px;
+  vertical-align: bottom;
+
+}
+
+
+
+button{
+  margin-top:15px;
+  background-color: aqua;
+  font-size:20px;
+  
+}
