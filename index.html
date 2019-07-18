@@ -1,80 +1,47 @@
-'use strict';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dog API Example</title>
+    <link rel="stylesheet" href="fluidGrid.css">
+    <link rel="stylesheet" href="style.css">
+    
+   
 
+    <script src="https://code.jquery.com/jquery-3.3.1.js"> </script>
+</head>
+<body>
+  <div class='row'>
+    <div class='col-12'>
+    <div role = 'container' class="container box">
+        <h1>How many dogs would you like to see?</h1>
 
-function generateDisplayElement(responseJson){
-  console.log('array length',responseJson.message.length);
-  let htmlArray = [];
-  for (let i=0;i<responseJson.message.length;i++){
-    htmlArray.push(`
-    <div class = 'col-3'>
-      <div class='box'>
-      <a target = "_blank" href=${responseJson.message[i]}>
-      <img src = ${responseJson.message[i]}>
-      </a>
-     </div>
+        <form role = 'submit-form' class = 'dog-search-form'>
+          <fieldset>
+          <div>
+          <label>Number
+          <input id = 'number-of-dogs' type="text"  value= '3' required> 
+          </label>
+          </div>
+          <div>
+          <label>Breed of Dog
+          <input id = 'breed-of-dogs' type="text"  value='hound' required>
+          </label>
+          </div>
+          <button id = 'submit-button' type="submit">Search Dogs</button>
+          </fieldset>
+        </form>
+    </div>   
     </div>
-    `);
-  }
-  console.log(htmlArray);
-  return htmlArray.join('');
-}
-
-
-
-function render(responseJson){
-  console.log('render result');
-  let elementString = generateDisplayElement(responseJson);
-  $('.dog-img-area').html(elementString);
-}
-
-
-function getResponse(numOfDog,breed){
-  console.log('get response from API');
-  fetch(`https://dog.ceo/api/breed/${breed}/images/random/${numOfDog}`)
+  </div>
+      
+		  <div class='row dog-img-area'>
+			
+		  </div>
     
     
-    .then(response => {
-      if (response.ok){
-        return response.json();
-        
-      }
-      throw ('response.statusText');
-    })
-    
-    //.then(response => response.json())
-    
-    .then(responseJson=> render(responseJson))
-    
-    .catch(err => {
-      $('.dog-img-area').text(`Something went wrong: ${err.message}`);
-    });
-} 
-
-function watchForm(){
-  console.log('watchForm ran');
-  $('form').on('submit',function(event){
-    event.preventDefault();
-    
-    let numOfDog = $('#number-of-dogs').val();
-    if(numOfDog >50) alert('please enter a number between 1~50');
-    $('#number-of-dogs').val('');
-    let breed = $('#breed-of-dogs').val();
-    console.log(breed);
-    getResponse(numOfDog,breed);
-  });
-}
-
-function displayImages(){
-  console.log('display images querried');
-}
-
-
-
-function dogImageAppHandle(){
-  
-  
-  watchForm();
-  
-}
-
-$(dogImageAppHandle);
+    <script src="script.js"></script>
+</body>
+</html>
